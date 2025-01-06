@@ -87,7 +87,41 @@ Let's use now the Modern Strategy, using ENUMS! ⬇️
 
 ## Modern Strategy
 
-## Comparing Approaches
+This strategy brings: safety, simplicity (since we don't use classes and hierarch, and if's to see the context).
+
+The first thing is, we can create a class with all the PaymentMethods with the logic inside of it:
+
+![img_3.png](img_3.png)
+
+Now that's the cool part. We can create a ENUM "PaymentMethod", that's going to receive them. Inside the attribute, we
+can call the method that we created inside the class (like a property, using lambda), check it out:
+
+❗For this call to work, the method needs to be static.
+
+Not, the "trick" part, read with attention.
+
+Inside the enum we can create a constructor, it'll receive a "Consumer". The consumer type is a functional interface that
+receives a value! We can set the type of data that the consumer will receive, and name it.
+
+To use this little guy, we need to create and attribute to save the value. After, we can create the method responsible
+for the payment (he's going to use the Consumer).
+
+The "accept" is a method that comes from the Consumer Interface (that receives an amount).
+
+**To emphasize, the type of payment come from the context (front-end).**
+
+![img_4.png](img_4.png)
+
+![img_5.png](img_5.png)
+
+And now, if there was a new payment method, we would only insert on the class, and in the ENUM, simple as that.
 
 ## Conclusion
 
+We improved the code readability and maintainability.
+
+It's easier to extend with new payment methods (OPEN/CLOSED - SOLID).
+
+We used Variations: Maps, Lambda...
+
+State pattern
